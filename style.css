@@ -1,0 +1,57 @@
+/* General Reset */
+body, h1, p, a {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe4e9; /* Light pink background */
+    color: #333; /* Dark gray text */
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background-color: #ff007f; /* Vibrant pink */
+    color: #fff; /* White text */
+    padding: 20px 0;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    background-color: #ff80bf; /* Soft pink */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the <a> element to look like a button */
+a.button {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ff007f; /* Vibrant pink */
+    color: #fff; /* White text */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+a.button:hover {
+    background-color: #cc0066; /* Slightly darker pink on hover */
+}
+
+/* Footer Styling */
+footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666; /* Light gray text */
+}
