@@ -1,30 +1,54 @@
 $(document).ready(function () {
-    const intercomSettings = {};
-
     // Boot Intercom
     $('#boot').click(function () {
-        intercomSettings.app_id = $('#app_id').val();
+        const appId = $('#app_id').val();
         const userId = $('#user_id').val();
         const email = $('#email').val();
 
-        if (userId) intercomSettings.user_id = userId;
+        if (!appId || !userId) {
+            alert('App ID and User ID are required to boot Intercom.');
+            return;
+        }
+
+        const intercomSettings = {
+            app_id: appId,
+            user_id: userId,
+        };
+
         if (email) intercomSettings.email = email;
 
         console.log('Attempting to boot Intercom with:', intercomSettings);
-        Intercom('boot', intercomSettings);
+
+        try {
+            // Shutdown before booting to avoid duplicate instances
+            Intercom('shutdown');
+            Intercom('boot', intercomSettings);
+        } catch (error) {
+            console.error('Error booting Intercom:', error);
+        }
     });
 
     // Update Intercom
     $('#update').click(function () {
-        const updatedSettings = {};
         const userId = $('#user_id').val();
         const email = $('#email').val();
 
+        if (!userId && !email) {
+            alert('Please provide User ID or Email to update Intercom settings.');
+            return;
+        }
+
+        const updatedSettings = {};
         if (userId) updatedSettings.user_id = userId;
         if (email) updatedSettings.email = email;
 
         console.log('Attempting to update Intercom with:', updatedSettings);
-        Intercom('update', updatedSettings);
+
+        try {
+            Intercom('update', updatedSettings);
+        } catch (error) {
+            console.error('Error updating Intercom settings:', error);
+        }
     });
 
     // Shutdown Intercom
@@ -35,13 +59,6 @@ $(document).ready(function () {
             console.log('Intercom has been shut down');
         } catch (error) {
             console.error('Error during shutdown:', error);
-        }
-
-        // Verify if Intercom is still accessible
-        if (typeof Intercom === 'function') {
-            console.log('Intercom object still exists. Shutdown only cleared the session.');
-        } else {
-            console.log('Intercom object is no longer available.');
         }
     });
 
