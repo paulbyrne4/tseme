@@ -20,9 +20,9 @@ $(document).ready(function () {
         console.log('Attempting to boot Intercom with:', intercomSettings);
 
         try {
-            // Shutdown before booting to avoid duplicate instances
-            Intercom('shutdown');
+            Intercom('shutdown'); // Ensure clean state
             Intercom('boot', intercomSettings);
+            Intercom('trackEvent', 'boot_clicked', { user_id: userId }); // Track boot event
         } catch (error) {
             console.error('Error booting Intercom:', error);
         }
@@ -46,6 +46,7 @@ $(document).ready(function () {
 
         try {
             Intercom('update', updatedSettings);
+            Intercom('trackEvent', 'user_updated', updatedSettings); // Track update event
         } catch (error) {
             console.error('Error updating Intercom settings:', error);
         }
@@ -62,12 +63,19 @@ $(document).ready(function () {
         }
     });
 
-    // Messenger Events
-    Intercom('onShow', function () {
-        console.log('Messenger opened');
+    // Start New Conversation
+    $('#new-conversation').click(function () {
+        const message = 'Hello! How can we assist you today?';
+        Intercom('showNewMessage', message);
+        console.log('Opened a new conversation with message:', message);
+
+        // Track new conversation event
+        Intercom('trackEvent', 'new_conversation_started', { custom_message: message });
     });
 
-    Intercom('onHide', function () {
-        console.log('Messenger closed');
+    // Trigger on Messenger Open
+    Intercom('onShow', function () {
+        console.log('Messenger opened!');
+        Intercom('trackEvent', 'messenger_opened', { timestamp: new Date().toISOString() });
     });
 });
