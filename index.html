@@ -36,6 +36,18 @@
         <p>© 2024 My Website</p>
     </footer>
 
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <!-- Debugging to check if jQuery is loaded -->
+    <script>
+        if (typeof jQuery !== 'undefined') {
+            console.log('jQuery is loaded!');
+        } else {
+            console.error('jQuery is NOT loaded!');
+        }
+    </script>
+
     <!-- Intercom Messenger Snippet -->
     <script>
         window.intercomSettings = {
@@ -75,10 +87,7 @@
         })();
     </script>
 
-    <!-- Add jQuery before your custom JavaScript file -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Custom JavaScript File -->
+    <!-- Include Custom JavaScript File (app.js) -->
     <script src="app.js"></script>
 </body>
 </html>
