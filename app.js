@@ -10,9 +10,8 @@ $(document).ready(function () {
         if (userId) intercomSettings.user_id = userId;
         if (email) intercomSettings.email = email;
 
-        console.log('Booting Intercom with settings:', intercomSettings);
+        console.log('Attempting to boot Intercom with:', intercomSettings);
         Intercom('boot', intercomSettings);
-        Intercom('showNewMessage', 'Hello! How can we help you today?');
     });
 
     // Update Intercom
@@ -24,33 +23,34 @@ $(document).ready(function () {
         if (userId) updatedSettings.user_id = userId;
         if (email) updatedSettings.email = email;
 
-        console.log('Updating Intercom with settings:', updatedSettings);
+        console.log('Attempting to update Intercom with:', updatedSettings);
         Intercom('update', updatedSettings);
     });
 
     // Shutdown Intercom
     $('#shutdown').click(function () {
         console.log('Shutdown button clicked');
-        Intercom('shutdown');
-        console.log('Intercom has been shut down');
+        try {
+            Intercom('shutdown');
+            console.log('Intercom has been shut down');
+        } catch (error) {
+            console.error('Error during shutdown:', error);
+        }
 
-        // Test if Intercom is available after shutdown
+        // Verify if Intercom is still accessible
         if (typeof Intercom === 'function') {
-            console.log('Intercom object still exists. Shutdown cleared the session but Intercom remains available.');
+            console.log('Intercom object still exists. Shutdown only cleared the session.');
         } else {
             console.log('Intercom object is no longer available.');
         }
     });
 
-    // Track Messenger Open Event
+    // Messenger Events
     Intercom('onShow', function () {
         console.log('Messenger opened');
-        Intercom('trackEvent', 'messenger_opened');
     });
 
-    // Track Messenger Close Event
     Intercom('onHide', function () {
         console.log('Messenger closed');
-        Intercom('trackEvent', 'messenger_closed');
     });
 });
