@@ -10,18 +10,20 @@ $(document).ready(function () {
             return;
         }
 
-        // If no user_id is provided, use an anonymous session or random ID
+        // Create Intercom settings object
         const intercomSettings = {
             app_id: appId,
         };
 
+        // Add user_id if provided
         if (userId) {
-            intercomSettings.user_id = userId; // For specific user
-        } else {
-            intercomSettings.user_id = `temp-${Math.random().toString(36).substr(2, 9)}`; // Temporary ID for anonymity
+            intercomSettings.user_id = userId;
         }
 
-        if (email) intercomSettings.email = email;
+        // Add email if provided
+        if (email) {
+            intercomSettings.email = email;
+        }
 
         console.log('Booting Intercom with settings:', intercomSettings);
 
