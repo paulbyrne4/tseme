@@ -5,84 +5,52 @@ $(document).ready(function () {
         const userId = $('#user_id').val();
         const email = $('#email').val();
 
-        if (!appId || !userId) {
-            alert('App ID and User ID are required to boot Intercom.');
+        if (!appId) {
+            alert('App ID is required to boot Intercom.');
             return;
         }
 
+        // If no user_id is provided, use an anonymous session or random ID
         const intercomSettings = {
             app_id: appId,
-            user_id: userId,
         };
+
+        if (userId) {
+            intercomSettings.user_id = userId; // For specific user
+        } else {
+            intercomSettings.user_id = `temp-${Math.random().toString(36).substr(2, 9)}`; // Temporary ID for anonymity
+        }
 
         if (email) intercomSettings.email = email;
 
-        console.log('Attempting to boot Intercom with:', intercomSettings);
+        console.log('Booting Intercom with settings:', intercomSettings);
 
         try {
             Intercom('shutdown'); // Ensure clean state
             Intercom('boot', intercomSettings);
-            Intercom('trackEvent', 'boot_clicked', { user_id: userId }); // Track boot event
+            console.log('Intercom booted successfully.');
         } catch (error) {
             console.error('Error booting Intercom:', error);
         }
     });
 
-    // Update Intercom
-    $('#update').click(function () {
-        const userId = $('#user_id').val();
-        const email = $('#email').val();
-
-        if (!userId && !email) {
-            alert('Please provide User ID or Email to update Intercom settings.');
-            return;
-        }
-
-        const updatedSettings = {};
-        if (userId) updatedSettings.user_id = userId;
-        if (email) updatedSettings.email = email;
-
-        console.log('Attempting to update Intercom with:', updatedSettings);
-
-        try {
-            Intercom('update', updatedSettings);
-            Intercom('trackEvent', 'user_updated', updatedSettings); // Track update event
-        } catch (error) {
-            console.error('Error updating Intercom settings:', error);
-        }
-    });
-
-    // Shutdown Intercom and Clear Identity
+    // Shutdown Intercom
     $('#shutdown').click(function () {
-        console.log('Shutdown button clicked');
+        console.log('Shutting down Intercom...');
         try {
             Intercom('shutdown');
-            console.log('Intercom has been shut down');
-
-            // Clear user-specific settings to reset identity
-            delete window.intercomSettings.user_id;
-            delete window.intercomSettings.email;
-
-            console.log('User data cleared.');
+            console.log('Intercom has been shut down.');
         } catch (error) {
             console.error('Error during shutdown:', error);
         }
     });
 
-    // Start New Conversation
+    // Open New Conversation
     $('#new-conversation').click(function () {
         const message = 'Hello! How can we assist you today?';
         Intercom('showNewMessage', message);
         console.log('Opened a new conversation with message:', message);
-
-        // Track new conversation event
-        Intercom('trackEvent', 'new_conversation_started', { custom_message: message });
-    });
-
-    // Trigger on Messenger Open
-    Intercom('onShow', function () {
-        console.log('Messenger opened!');
-        Intercom('trackEvent', 'messenger_opened', { timestamp: new Date().toISOString() });
     });
 });
+
 
