@@ -52,12 +52,18 @@ $(document).ready(function () {
         }
     });
 
-    // Shutdown Intercom
+    // Shutdown Intercom and Clear Identity
     $('#shutdown').click(function () {
         console.log('Shutdown button clicked');
         try {
             Intercom('shutdown');
             console.log('Intercom has been shut down');
+
+            // Clear user-specific settings to reset identity
+            delete window.intercomSettings.user_id;
+            delete window.intercomSettings.email;
+
+            console.log('User data cleared.');
         } catch (error) {
             console.error('Error during shutdown:', error);
         }
@@ -79,3 +85,4 @@ $(document).ready(function () {
         Intercom('trackEvent', 'messenger_opened', { timestamp: new Date().toISOString() });
     });
 });
+
