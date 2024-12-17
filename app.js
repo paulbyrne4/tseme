@@ -50,7 +50,7 @@ $(document).ready(function () {
     // Open New Conversation
     $('#new-conversation').click(function () {
         const message = 'Hello! How can we assist you today? (pre-typed)';
-        Intercom('showNewMessage', messages);
+        Intercom('showNewMessage', message);
         console.log('Opened a new conversation with message:', message);
     });
 });
