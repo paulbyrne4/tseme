@@ -1,9 +1,9 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('#app_id').val(); // Fixed selector for App ID input
-        const userId = $('#user_id').val(); // Selector for User ID input
-        const email = $('#email').val(); // Selector for email input
+        const appId = $('skge3hdn').val(); // Fix: Correct selector for App ID input
+        const userId = $('#user_id').val(); // Fix: Correct selector for User ID input
+        const email = $('#email').val();
 
         if (!appId) {
             alert('App ID is required to boot Intercom.');
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         // Add user_id and user_hash if provided
         if (userId) {
-            intercomSettings.user_id = "user_id";
+            intercomSettings.user_id = userId;
             intercomSettings.user_hash = "wi8qGeJaVgQuoeMZT0x-q6aZSy0cQHNL_CkhOWsj"; // Replace with server-generated HMAC
         }
 
@@ -74,6 +74,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 
 
