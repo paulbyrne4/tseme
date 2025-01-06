@@ -1,12 +1,24 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('#app_id').val();
-        const userId = $('#user_id').val();
+        const appId = $('skge3hdn').val();
+        const userId = $('675d6908369415926f777212').val();
         const email = $('#email').val();
 
         if (!appId) {
             alert('App ID is required to boot Intercom.');
+            return;
+        }
+
+        // Validate User ID
+        if (userId && !/^\w+$/.test(userId)) {
+            alert('User ID contains invalid characters.');
+            return;
+        }
+
+        // Validate Email
+        if (email && !/^\S+@\S+\.\S+$/.test(email)) {
+            alert('Invalid email address format.');
             return;
         }
 
@@ -15,9 +27,10 @@ $(document).ready(function () {
             app_id: appId,
         };
 
-        // Add user_id if provided
+        // Add user_id and user_hash if provided
         if (userId) {
             intercomSettings.user_id = userId;
+            intercomSettings.user_hash = "wi8qGeJaVgQuoeMZT0x-q6aZSy0cQHNL_CkhOWsj"; // Replace with server-generated HMAC
         }
 
         // Add email if provided
@@ -25,13 +38,14 @@ $(document).ready(function () {
             intercomSettings.email = email;
         }
 
-        console.log('Booting Intercom with settings:', intercomSettings);
+        console.log('Booting Intercom with settings:', JSON.stringify(intercomSettings, null, 2));
 
         try {
             Intercom('shutdown'); // Ensure clean state
             Intercom('boot', intercomSettings);
             console.log('Intercom booted successfully.');
         } catch (error) {
+            alert('Failed to boot Intercom. Check the console for details.');
             console.error('Error booting Intercom:', error);
         }
     });
@@ -43,6 +57,7 @@ $(document).ready(function () {
             Intercom('shutdown');
             console.log('Intercom has been shut down.');
         } catch (error) {
+            alert('Failed to shut down Intercom. Check the console for details.');
             console.error('Error during shutdown:', error);
         }
     });
@@ -50,10 +65,16 @@ $(document).ready(function () {
     // Open New Conversation
     $('#new-conversation').click(function () {
         const message = 'Hello! How can we assist you today? (pre-typed)';
-        Intercom('showNewMessage', message);
-        console.log('Opened a new conversation with message:', message);
+        try {
+            Intercom('showNewMessage', message);
+            console.log('Opened a new conversation with message:', message);
+        } catch (error) {
+            alert('Failed to start a new conversation. Check the console for details.');
+            console.error('Error opening new conversation:', error);
+        }
     });
 });
+
 
 
 
