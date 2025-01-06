@@ -1,9 +1,9 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('skge3hdn').val(); // Fix: Correct selector for App ID input
-        const userId = $('#user_id').val(); // Fix: Correct selector for User ID input
-        const email = $('#email').val();
+        const appId = $('#app_id').val(); // Fixed selector for App ID input
+        const userId = $('#user_id').val(); // Selector for User ID input
+        const email = $('#email').val(); // Selector for email input
 
         if (!appId) {
             alert('App ID is required to boot Intercom.');
