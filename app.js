@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('#app_id').val(); // Fix: Correct selector for App ID input
+        const appId = $('skge3hdn').val(); // Fix: Correct selector for App ID input
         const userId = $('#user_id').val(); // Fix: Correct selector for User ID input
         const email = $('#email').val();
 
