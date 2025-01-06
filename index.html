@@ -24,6 +24,7 @@
             <input type="email" id="email" placeholder="Enter Email"><br><br>
 
             <button type="button" id="boot">Boot</button>
+            <button type="button" id="update">Update</button>
             <button type="button" id="shutdown">Shutdown</button>
             <button type="button" id="new-conversation">Start New Conversation</button>
         </form>
@@ -50,14 +51,12 @@
     <!-- Intercom Messenger Snippet -->
     <script>
         window.intercomSettings = {
-            api_base: "https://api-iam.intercom.io",
-            app_id: "skge3hdn",
-            user_id: document.getElementById('user_id').value, // Replace with the logged-in user's ID
-            user_hash: "wi8qGeJaVgQuoeMZT0x-q6aZSy0cQHNL_CkhOWsj", // Replace with the server-generated HMAC
-            custom_launcher_selector: '#custom_launcher' // Link the custom launcher
+            app_id: "skge3hdn", // Replace 'skge3hdn' with your Intercom app ID
+            custom_launcher_selector: '#custom_launcher' // Using the <a> element as the custom launcher
         };
-
-        (function () {
+    </script>
+    <script>
+        (function() {
             var w = window;
             var ic = w.Intercom;
             if (typeof ic === "function") {
@@ -65,11 +64,11 @@
                 ic('update', w.intercomSettings);
             } else {
                 var d = document;
-                var i = function () { i.c(arguments); };
+                var i = function() { i.c(arguments); };
                 i.q = [];
-                i.c = function (args) { i.q.push(args); };
+                i.c = function(args) { i.q.push(args); };
                 w.Intercom = i;
-                var l = function () {
+                var l = function() {
                     var s = d.createElement('script');
                     s.type = 'text/javascript';
                     s.async = true;
@@ -88,10 +87,11 @@
         })();
     </script>
 
-    <!-- Include Custom JavaScript File -->
+    <!-- Include Custom JavaScript File (app.js) -->
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
