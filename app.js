@@ -1,8 +1,8 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('skge3hdn').val();
-        const userId = $('675d6908369415926f777212').val();
+        const appId = $('#app_id').val(); // Fix: Correct selector for App ID input
+        const userId = $('#user_id').val(); // Fix: Correct selector for User ID input
         const email = $('#email').val();
 
         if (!appId) {
@@ -74,6 +74,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 
 
