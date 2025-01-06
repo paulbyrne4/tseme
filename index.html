@@ -1,3 +1,46 @@
+<script>
+    // Intercom settings with dynamic user data
+    window.intercomSettings = {
+        api_base: "https://api-iam.intercom.io",
+        app_id: "skge3hdn",
+        user_id: "675d6908369415926f777212", // Replace with the logged-in user's ID
+        user_hash: "wi8qGeJaVgQuoeMZT0x-q6aZSy0cQHNL_CkhOWsj" // Replace this with the HMAC code you generated on your server
+    };
+</script>
+
+<script>
+    // Intercom boot and initialization script
+    (function() {
+        var w = window;
+        var ic = w.Intercom;
+        if (typeof ic === "function") {
+            ic('reattach_activator');
+            ic('update', w.intercomSettings);
+        } else {
+            var d = document;
+            var i = function() { i.c(arguments); };
+            i.q = [];
+            i.c = function(args) { i.q.push(args); };
+            w.Intercom = i;
+            var l = function() {
+                var s = d.createElement('script');
+                s.type = 'text/javascript';
+                s.async = true;
+                s.src = 'https://widget.intercom.io/widget/skge3hdn';
+                var x = d.getElementsByTagName('script')[0];
+                x.parentNode.insertBefore(s, x);
+            };
+            if (document.readyState === 'complete') {
+                l();
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', l);
+            } else {
+                w.addEventListener('load', l, false);
+            }
+        }
+    })();
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +69,7 @@
             <button type="button" id="boot">Boot</button>
             <button type="button" id="update">Update</button>
             <button type="button" id="shutdown">Shutdown</button>
-            <button type="button" id="new-conversation">Start New Conversation</button> <!-- New button -->
+            <button type="button" id="new-conversation">Start New Conversation</button>
         </form>
 
         <!-- Custom Launcher -->
@@ -48,46 +91,17 @@
         }
     </script>
 
-    <!-- Intercom Messenger Snippet -->
+    <!-- Intercom Messenger Configuration -->
     <script>
+        // Redundant Intercom settings declaration for different sections
         window.intercomSettings = {
-            app_id: "skge3hdn", // Replace 'skge3hdn' with your Intercom app ID
+            app_id: "skge3hdn",
             custom_launcher_selector: '#custom_launcher' // Using the <a> element as the custom launcher
         };
-    </script>
-    <script>
-        (function() {
-            var w = window;
-            var ic = w.Intercom;
-            if (typeof ic === "function") {
-                ic('reattach_activator');
-                ic('update', w.intercomSettings);
-            } else {
-                var d = document;
-                var i = function() { i.c(arguments); };
-                i.q = [];
-                i.c = function(args) { i.q.push(args); };
-                w.Intercom = i;
-                var l = function() {
-                    var s = d.createElement('script');
-                    s.type = 'text/javascript';
-                    s.async = true;
-                    s.src = 'https://widget.intercom.io/widget/skge3hdn';
-                    var x = d.getElementsByTagName('script')[0];
-                    x.parentNode.insertBefore(s, x);
-                };
-                if (document.readyState === 'complete') {
-                    l();
-                } else if (w.attachEvent) {
-                    w.attachEvent('onload', l);
-                } else {
-                    w.addEventListener('load', l, false);
-                }
-            }
-        })();
     </script>
 
     <!-- Include Custom JavaScript File (app.js) -->
     <script src="app.js"></script>
 </body>
 </html>
+
