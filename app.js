@@ -1,9 +1,9 @@
 $(document).ready(function () {
     // Boot Intercom
     $('#boot').click(function () {
-        const appId = $('skge3hdn').val(); // Fix: Correct selector for App ID input
-        const userId = $('#user_id').val(); // Fix: Correct selector for User ID input
-        const email = $('#email').val();
+        const appId = $('#app_id').val(); // Fixed selector for App ID input
+        const userId = $('#user_id').val(); // Selector for User ID input
+        const email = $('#email').val(); // Selector for email input
 
         if (!appId) {
             alert('App ID is required to boot Intercom.');
@@ -52,28 +52,6 @@ $(document).ready(function () {
 
     // Shutdown Intercom
     $('#shutdown').click(function () {
-        console.log('Shutting down Intercom...');
-        try {
-            Intercom('shutdown');
-            console.log('Intercom has been shut down.');
-        } catch (error) {
-            alert('Failed to shut down Intercom. Check the console for details.');
-            console.error('Error during shutdown:', error);
-        }
-    });
-
-    // Open New Conversation
-    $('#new-conversation').click(function () {
-        const message = 'Hello! How can we assist you today? (pre-typed)';
-        try {
-            Intercom('showNewMessage', message);
-            console.log('Opened a new conversation with message:', message);
-        } catch (error) {
-            alert('Failed to start a new conversation. Check the console for details.');
-            console.error('Error opening new conversation:', error);
-        }
-    });
-});
 
 
 
