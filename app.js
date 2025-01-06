@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         // Add user_id and user_hash if provided
         if (userId) {
-            intercomSettings.user_id = 675d6908369415926f777212;
+            intercomSettings.user_id = "user_id";
             intercomSettings.user_hash = "wi8qGeJaVgQuoeMZT0x-q6aZSy0cQHNL_CkhOWsj"; // Replace with server-generated HMAC
         }
 
