@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to My Test Page</h1>
+        <h1 data-intercom-target="Page Title">Welcome to My Test Page</h1>
     </header>
     <main>
         <p>Testing 123</p>
@@ -18,22 +18,22 @@
             <input type="text" id="app_id" value="skge3hdn" required><br><br>
 
             <label for="user_id">User ID:</label>
-            <input type="text" id="user_id" placeholder="Enter User ID"><br><br>
+            <input type="text" id="user_id" placeholder="Enter User ID" data-intercom-target="User ID Input"><br><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" placeholder="Enter Email"><br><br>
 
-            <button type="button" id="boot">Boot</button>
+            <button type="button" id="boot" data-intercom-target="Boot Button">Boot</button>
             <button type="button" id="update">Update</button>
             <button type="button" id="shutdown">Shutdown</button>
             <button type="button" id="new-conversation">Start New Conversation</button> <!-- New button -->
         </form>
 
         <!-- Custom Launcher -->
-        <a id="custom_launcher" href="mailto:paul.byrne@intercom.io" class="button">Custom Launcher</a>
+        <a id="custom_launcher" href="mailto:paul.byrne@intercom.io" class="button" data-intercom-target="Custom Launcher">Custom Launcher</a>
     </main>
     <footer>
-        <p>© 2024 My Website</p>
+        <p data-intercom-target="Footer Attribution">© 2024 My Website</p>
     </footer>
 
     <!-- Include jQuery -->
@@ -91,6 +91,7 @@
     <script src="app.js"></script>
 </body>
 </html>
+
 
 
 
