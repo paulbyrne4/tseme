@@ -4,6 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test Page</title>
+    <style>
+        body {
+            background-color: #f4f7fa; /* Soft blue-gray, Intercom-ish */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        header h1 {
+            color: #1f2a44; /* Dark blue, inspired by Intercom’s palette */
+            text-align: center;
+        }
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff; /* White card-like background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        form label {
+            color: #34495e; /* Muted blue-gray for labels */
+            font-weight: bold;
+        }
+        form input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #277cea; /* Intercom’s blue for buttons */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        form button:hover {
+            background-color: #1f65c6; /* Darker blue on hover */
+        }
+        #custom_launcher {
+            display: inline-block;
+            background-color: #2ecc71; /* Green for the launcher */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        #custom_launcher:hover {
+            background-color: #27ae60; /* Darker green on hover */
+        }
+        footer p {
+            color: #7f8c8d; /* Gray for footer */
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -26,7 +86,7 @@
             <button type="button" id="boot" data-intercom-target="Boot Button">Boot</button>
             <button type="button" id="update">Update</button>
             <button type="button" id="shutdown">Shutdown</button>
-            <button type="button" id="new-conversation">Start New Conversation</button> <!-- New button -->
+            <button type="button" id="new-conversation">Start New Conversation</button>
         </form>
 
         <!-- Custom Launcher -->
@@ -51,8 +111,8 @@
     <!-- Intercom Messenger Snippet -->
     <script>
         window.intercomSettings = {
-            app_id: "skge3hdn", // Replace 'skge3hdn' with your Intercom app ID
-            custom_launcher_selector: '#custom_launcher' // Using the <a> element as the custom launcher
+            app_id: "skge3hdn",
+            custom_launcher_selector: '#custom_launcher'
         };
     </script>
     <script>
@@ -87,7 +147,7 @@
         })();
     </script>
 
-    <!-- Include Custom JavaScript File (app.js) -->
+    <!-- Include Custom JavaScript File -->
     <script src="app.js"></script>
 </body>
 </html>
