@@ -6,25 +6,31 @@
     <title>Test Page</title>
     <style>
         body {
-            background-color: #f4f7fa; /* Soft blue-gray, Intercom-ish */
+            background-color: #f4f7fa;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 20px;
         }
         header h1 {
-            color: #1f2a44; /* Dark blue, inspired by Intercom’s palette */
+            color: #1f2a44;
             text-align: center;
+        }
+        header img.intercom-logo {
+            display: block;
+            margin: 10px auto; /* Centers the image */
+            max-width: 150px; /* Keeps it tidy */
+            height: auto;
         }
         main {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff; /* White card-like background */
+            background-color: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         form label {
-            color: #34495e; /* Muted blue-gray for labels */
+            color: #34495e;
             font-weight: bold;
         }
         form input {
@@ -35,7 +41,7 @@
             border-radius: 4px;
         }
         form button {
-            background-color: #277cea; /* Intercom’s blue for buttons */
+            background-color: #277cea;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -44,11 +50,11 @@
             margin-right: 10px;
         }
         form button:hover {
-            background-color: #1f65c6; /* Darker blue on hover */
+            background-color: #1f65c6;
         }
         #custom_launcher {
             display: inline-block;
-            background-color: #2ecc71; /* Green for the launcher */
+            background-color: #2ecc71;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -56,10 +62,10 @@
             margin-top: 20px;
         }
         #custom_launcher:hover {
-            background-color: #27ae60; /* Darker green on hover */
+            background-color: #27ae60;
         }
         footer p {
-            color: #7f8c8d; /* Gray for footer */
+            color: #7f8c8d;
             text-align: center;
             margin-top: 20px;
         }
@@ -68,38 +74,30 @@
 <body>
     <header>
         <h1 data-intercom-target="Page Title">Welcome to My Test Page</h1>
+        <img src="https://www.intercom.com/wp-content/uploads/2023/09/intercom-logo.svg" alt="Intercom Logo" class="intercom-logo">
     </header>
     <main>
-        <p>Hello World</p>
-        
-        <!-- Form for Intercom Interaction -->
+        <p>Testing 123</p>
+        <!-- Form and rest of your content unchanged -->
         <form id="intercom-form">
             <label for="app_id">App ID:</label>
             <input type="text" id="app_id" value="skge3hdn" required><br><br>
-
             <label for="user_id">User ID:</label>
             <input type="text" id="user_id" placeholder="Enter User ID" data-intercom-target="User ID Input"><br><br>
-
             <label for="email">Email:</label>
             <input type="email" id="email" placeholder="Enter Email"><br><br>
-
             <button type="button" id="boot" data-intercom-target="Boot Button">Boot</button>
             <button type="button" id="update">Update</button>
             <button type="button" id="shutdown">Shutdown</button>
             <button type="button" id="new-conversation">Start New Conversation</button>
         </form>
-
-        <!-- Custom Launcher -->
         <a id="custom_launcher" href="mailto:paul.byrne@intercom.io" class="button" data-intercom-target="Custom Launcher">Custom Launcher</a>
     </main>
     <footer>
         <p data-intercom-target="Footer Attribution">© 2024 My Website</p>
     </footer>
-
-    <!-- Include jQuery -->
+    <!-- Scripts unchanged -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
-    <!-- Debugging to check if jQuery is loaded -->
     <script>
         if (typeof jQuery !== 'undefined') {
             console.log('jQuery is loaded!');
@@ -107,8 +105,6 @@
             console.error('jQuery is NOT loaded!');
         }
     </script>
-
-    <!-- Intercom Messenger Snippet -->
     <script>
         window.intercomSettings = {
             app_id: "skge3hdn",
@@ -146,8 +142,6 @@
             }
         })();
     </script>
-
-    <!-- Include Custom JavaScript File -->
     <script src="app.js"></script>
 </body>
 </html>
